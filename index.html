@@ -10,8 +10,7 @@
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
   <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="來自高雄的年輕球隊，由一群喜愛打球的學生及社會新鮮人組成，不在乎戰績只想打場好球，歡迎各位朋友加入我們，一起享受棒球">
-  <meta name="keywords" content="夢想家棒球隊" /> 
+
 
 
 <link href='sm-css/sm-core-css.css' rel='stylesheet' type='text/css' />
@@ -44,6 +43,16 @@
 <link href="css/common.css" rel="stylesheet" />
 <link href="css/swiper.min.css" rel="stylesheet" />  
 
+<!-- vue+element ui -->
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui@2.15.0/lib/index.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link href="elementUI.css" rel="stylesheet" >
+
+<link href="https://tafengtravel.github.io/tafengtravel/index/css/book.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -62,7 +71,13 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
+<style>
+  .el-table .color-row {
+    background: #C9D6E0;
+  }
 
+
+</style>
 
 
 
@@ -92,15 +107,155 @@
   </ul>
 </nav>
 
-
 <div id="pnl_wrapper" class="wrapper homepage green-page">
+
   <div class="home-banner">
       
     <a href="#" target="_blank"><img class="d-none d-md-block" src="image/cover_1.jpg" alt="#" ><img class="d-block d-md-none" src="image/cover_1.jpg" alt="#" ></a>        
     <a href="#" target="_blank"><img class="d-none d-md-block" src="image/cover_1.jpg" alt="#" ><img class="d-block d-md-none" src="image/cover_1.jpg" alt="#" ></a>        
             
   </div>
+  <br>
+
+
+<div id="app" class ="el-col el-col-24 el-col-xs-24 el-col-xs-offset-0 el-col-sm-24 el-col-sm-offset-0 el-col-lg-14 el-col-lg-offset-5"> 
+
+  
+  <el-row :gutter="20">
+    <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8 ">
+      
+      <h2 class ="sub_title"><font color="#003364">打擊排行</font></h2>
+      <template>
+
+        <el-tabs v-model="batter" @tab-click="batterClick">
+          <el-tab-pane label="打擊率" name="first">
+            <el-table :data="tableDataAvg" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column prop="numberAvg" label="背號"></el-table-column>
+              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
+              <el-table-column prop="Avg" label="打擊率"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+
+          <el-tab-pane label="打點" name="second">
+            <el-table :data="tableDataRbi" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column prop="numberAvg" label="背號"></el-table-column>
+              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
+              <el-table-column prop="Avg" label="打點"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+
+          <el-tab-pane label="全壘打" name="third">
+            <el-table :data="tableDataHr" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column prop="numberAvg" label="背號"></el-table-column>
+              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
+              <el-table-column prop="Avg" label="全壘打"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+
+          <el-tab-pane label="安打" name="fourth">
+            <el-table :data="tableDataHit" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column prop="numberAvg" label="背號"></el-table-column>
+              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
+              <el-table-column prop="Avg" label="安打"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+
+          <el-tab-pane label="盜壘" name="fifth">
+            <el-table :data="tableDataSb" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column prop="numberAvg" label="背號"></el-table-column>
+              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
+              <el-table-column prop="Avg" label="盜壘"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </el-tabs>
+        
+      </template>
+    </el-col>
+
+    <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8">
+
+      <h2 class ="sub_title"><font color="#003364">投手排行</font></h2>
+      <template>
+
+        <el-tabs v-model="pitcher" @tab-click="pitcherClick">
+          <el-tab-pane label="勝投" name="first">打擊率</el-tab-pane>
+          <el-tab-pane label="救援" name="second">打點</el-tab-pane>
+          <el-tab-pane label="中繼" name="third">全壘打</el-tab-pane>
+          <el-tab-pane label="防禦率" name="fourth">安打</el-tab-pane>
+          <el-tab-pane label="三振" name="fifth">盜壘</el-tab-pane>
+        </el-tabs>
+        
+      </template>
+    </el-col>
+
+    <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8">
+
+      <h2 class ="sub_title"><font color="#003364">戰績排行</font></h2>
+      
+    </el-col>
+
+    
+  </el-row>
+  
+
 </div>
+
+</div>
+
+
+
+<script>
+  let tableData1 = [{
+    numberAvg: '26',
+    nameAvg: '呂皇毅',
+    Avg: '0.455',
+  }, {
+    numberAvg: '24',
+    nameAvg: '馮昱雲',
+    Avg: '0.400'
+  }]
+
+  console.log(tableData1)
+
+
+
+  var Main = {
+    data() {
+      return {
+        batter: 'first',
+        pitcher: 'first',
+        tableDataAvg: tableData1,
+        tableDataRbi: tableData1,
+        tableDataHr: tableData1,
+        tableDataHit: tableData1,
+        tableDataSb: tableData1,
+          
+    
+      };
+
+    },methods: {
+      batterClick(tab, event) {
+        console.log(tab, event);
+        console.log(this.tableData[0])
+      },
+      pitcherClick(tab, event) {
+        console.log(tab, event);
+      },
+      tableRowClassName({row, rowIndex}) {
+        if (rowIndex%2 === 1) {
+          return 'color-row';
+        } 
+        return '';
+      }
+    }
+        
+     
+  };
+
+  var Ctor = Vue.extend(Main)
+  new Ctor().$mount('#app')
+    
+</script>
 
 
 </body>
