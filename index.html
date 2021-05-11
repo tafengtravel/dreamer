@@ -186,44 +186,64 @@
     <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8">
 
       <h2 class ="sub_title"><font color="#003364">投手排行</font></h2>
-      <template>
+      <template >
 
         <el-tabs v-model="pitcher" @tab-click="pitcherClick">
           <el-tab-pane label="勝投" name="first">
             <el-table :data="tableDataWIN.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'WIN', order: 'descending'}">
+              <template slot="empty">
+                <span>沒有資料</span>
+              </template>
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="WIN" label="勝投"></el-table-column>
             </el-table>
           </el-tab-pane>
+
           <el-tab-pane label="救援" name="second">
+            <template slot="empty">
+              <span>沒有資料</span>
+            </template>
             <el-table :data="tableDataSV.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="SV" label="勝投"></el-table-column>
             </el-table>
           </el-tab-pane>
+
           <el-tab-pane label="中繼" name="third">
+            <template slot="empty">
+              <span>沒有資料</span>
+            </template>
             <el-table :data="tableDataHLD.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HLD', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="HLD" label="勝投"></el-table-column>
             </el-table>
           </el-tab-pane>
+
           <el-tab-pane label="防禦率" name="fourth">
+            <template slot="empty">
+              <span>沒有資料</span>
+            </template>
             <el-table :data="tableDataERA.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'ERA', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="ERA" label="勝投"></el-table-column>
             </el-table>
           </el-tab-pane>
+
           <el-tab-pane label="三振" name="fifth">
+            <template slot="empty">
+              <span>沒有資料</span>
+            </template>
             <el-table :data="tableDataSO.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SO', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="SO" label="勝投"></el-table-column>
             </el-table>
           </el-tab-pane>
+
         </el-tabs>
         
       </template>
@@ -340,7 +360,7 @@
 
     },methods: {
       batterClick(tab, event) {
-       
+        console.log(tableDataWIN)
       },
       pitcherClick(tab, event) {
         console.log(tab, event);
@@ -350,7 +370,7 @@
           return 'color-row';
         } 
         return '';
-      }
+      },
     }
         
      
