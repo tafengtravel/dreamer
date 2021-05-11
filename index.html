@@ -144,7 +144,7 @@
 
         <el-tabs v-model="batter" @tab-click="batterClick">
           <el-tab-pane label="打擊率" name="AVG">
-            <el-table :data="tableDataAVG.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'AVG', order: 'descending'}">
+            <el-table :data="tableDataAVG.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" >
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="AVG" label="打擊率"></el-table-column>
@@ -316,7 +316,7 @@
     sort()    
   }
 
-  function sort(){
+  async function sort(){
     sortBatterAVG = batterData
     sortBatterRBI = batterData
     sortBatterHR = batterData
@@ -329,92 +329,20 @@
     sortPitcherERA = pitcherData
     sortPitcherK = pitcherData
 
-    try { 
-      sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
-    }
-    catch (e) {
-      sortBatterAVG = [];
-      console.log(e); 
-    }
+    await sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
+    await sortBatterRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
+    await sortBatterHR.sort((a, b) => (b.HR).localeCompare(a.HR));
+    await sortBatterHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
+    await sortBatterSB.sort((a, b) => (b.SB).localeCompare(a.SB));
+    await sortPitcherW.sort((a, b) => (b.W).localeCompare(a.W));
+    await sortPitcherSV.sort((a, b) => (b.SV).localeCompare(a.SV));
+    await sortPitcherHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
+    await sortPitcherERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
+    await sortPitcherK.sort((a, b) => (b.K).localeCompare(a.K));
 
-    try { 
-      sortBatterRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
-    }
-    catch (e) {
-      sortBatterRBI = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortBatterHR.sort((a, b) => (b.HR).localeCompare(a.HR));
-    }
-    catch (e) {
-      sortBatterHR = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortBatterHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
-    }
-    catch (e) {
-      sortBatterHIT = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortBatterSB.sort((a, b) => (b.SB).localeCompare(a.SB));
-    }
-    catch (e) {
-      sortBatterSB = [];
-      console.log(e); 
-    }
-
-    //--
-    try { 
-      sortPitcherW.sort((a, b) => (b.W).localeCompare(a.W));
-    }
-    catch (e) {
-      sortPitcherW = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortPitcherSV.sort((a, b) => (b.SV).localeCompare(a.SV));
-    }
-    catch (e) {
-      sortPitcherSV = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortPitcherHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
-    }
-    catch (e) {
-      sortPitcherHLD = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortPitcherERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
-    }
-    catch (e) {
-      sortPitcherERA = [];
-      console.log(e); 
-    }
-
-    try { 
-      sortPitcherK.sort((a, b) => (b.K).localeCompare(a.K));
-    }
-    catch (e) {
-      sortBatterK = [];
-      console.log(e); 
-    }
-
-    console.log(sortPitcherK)
-    
     news.sort((a, b) => (b.date).localeCompare(a.date));
-
-    vue()
+    
+    await vue()
   }
   
   
@@ -444,7 +372,7 @@
 
       },methods: {
         batterClick(tab, event) {
-          console.log()
+          sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
         },
         pitcherClick(tab, event) {
           console.log();
@@ -455,6 +383,8 @@
           } 
           return '';
         },
+      },created(){
+        
       }
   };
 
