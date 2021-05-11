@@ -270,62 +270,15 @@
 
 
 <script>
-  let tableData1 = [{
-    number: '26',
-    name: '呂皇毅',
-    AVG: '0.455',
-    HR: 2,
-    SB: 8,
-    RBI: 2,
-    HIT: 5
-  }, {
-    number: '24',
-    name: '馮昱雲',
-    AVG: '0.400',
-    HR: 3,
-    SB: 8,
-    RBI: 5,
-    HIT:6
-  },{
-    number: '7',
-    name: '王立勝',
-    AVG: '0.355',
-    HR: 20,
-    SB: 4,
-    RBI: 2,
-    HIT: 21
-  },{
-    number: '26',
-    name: '呂皇毅',
-    AVG: '0.455',
-    HR: 2,
-    SB: 8,
-    RBI: 2,
-    HIT: 5
-  },{
-    number: '26',
-    name: '呂皇毅',
-    AVG: '0.455',
-    HR: 2,
-    SB: 8,
-    RBI: 2,
-    HIT: 5
-  },{
-    number: '26',
-    name: '呂皇毅',
-    AVG: '0.455',
-    HR: 2,
-    SB: 8,
-    RBI: 2,
-    HIT: 5
-  }]
+  let tableData1
+  let sortAVG;let sortRBI;let sortHR;let sortHIT;let sortSB;
 
   let news =[{
-    date: '2021-05-11',
+    date: '0.22 ',
     title: '夢想家勝率重回五成',
     link:'122.html'
   },{
-    date: '2021-05-01',
+    date: '0.52 ',
     title: '夢想家雨中慘敗',
     link:'122.html'
   },{
@@ -335,72 +288,89 @@
   }]
 
   news.sort((a, b) => (b.date).localeCompare(a.date));
+  console.log(news)
 
-  console.log(tableData1)
+  getJson() 
 
+  async function getJson(){
+    var dataUrl= "https://kevin860320.github.io/dreamer/batter.json"
 
-  var selectedFile = document.getElementById("files").files[0];//獲取讀取的File物件
-  var name = selectedFile.name;//讀取選中檔案的檔名
-  var size = selectedFile.size;//讀取選中檔案的大小
-  console.log("檔名:"+name+"大小："+size);
-  var reader = new FileReader();//這裡是核心！！！讀取操作就是由它完成的。
-  reader.readAsText(selectedFile);//讀取檔案的內容
-
-  reader.onload = function(docDATA){
-
-      console.log("讀取結果轉為JSON：");
-
-
-      console.log((Object.keys(docDATA)).length);
-      console.log(docDATA)
-
-      
-  };
-
-
-
-  var Main = {
-    data() {
-      return {
-        batter: 'AVG',
-        pitcher: 'first',
-        tableDataAVG: tableData1,
-        tableDataRBI: tableData1,
-        tableDataHR: tableData1,
-        tableDataHIT: tableData1,
-        tableDataSB: tableData1,
-
-        tableDataWIN: tableData1,
-        tableDataSV: tableData1,
-        tableDataHLD: tableData1,
-        tableDataERA: tableData1,
-        tableDataK: tableData1,
-
-        tableDataNEWS: news,
-          
+    await axios.get(dataUrl)
+    .then( (res) => {
+      tableData1 = res.data
+    })
+    .catch( (err) => {
+        console.log(err);
+    });
     
-      };
+    sort()    
+  }
 
-    },methods: {
-      batterClick(tab, event) {
-        console.log(tableDataWIN)
-      },
-      pitcherClick(tab, event) {
-        console.log(tab, event);
-      },
-      tableRowClassName({row, rowIndex}) {
-        if (rowIndex%2 === 1) {
-          return 'color-row';
-        } 
-        return '';
-      },
-    }
-        
-     
+  function sort(){
+    console.log(tableData1);
+    sortAVG = tableData1
+    sortRBI = tableData1
+    sortHR = tableData1
+    sortHIT = tableData1
+    sortSB = tableData1
+
+    sortAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
+    sortRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
+    sortHR.sort((a, b) => (b.HR).localeCompare(a.HR));
+    sortHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
+    sortSB.sort((a, b) => (b.SB).localeCompare(a.SB));
+
+    vue()
+  }
+  
+  
+
+  function vue(){
+
+    var Main = {
+      data() {
+        return {
+          batter: 'AVG',
+          pitcher: 'first',
+          tableDataAVG: tableData1,
+          tableDataRBI: tableData1,
+          tableDataHR: tableData1,
+          tableDataHIT: tableData1,
+          tableDataSB: tableData1,
+
+          tableDataWIN: tableData1,
+          tableDataSV: tableData1,
+          tableDataHLD: tableData1,
+          tableDataERA: tableData1,
+          tableDataK: tableData1,
+
+          tableDataNEWS: news,
+            
+      
+        };
+
+      },methods: {
+        batterClick(tab, event) {
+          console.log(tableDataWIN)
+        },
+        pitcherClick(tab, event) {
+          console.log(tab, event);
+        },
+        tableRowClassName({row, rowIndex}) {
+          if (rowIndex%2 === 1) {
+            return 'color-row';
+          } 
+          return '';
+        },
+      }
   };
 
   var Ctor = Vue.extend(Main)
   new Ctor().$mount('#app')
+
+  }
+
+  
     
 </script>
 
