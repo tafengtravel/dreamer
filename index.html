@@ -120,6 +120,17 @@
 
 <div id="app" class ="el-col el-col-24 el-col-xs-24 el-col-xs-offset-0 el-col-sm-24 el-col-sm-offset-0 el-col-lg-14 el-col-lg-offset-5"> 
 
+  <h2 class ="sub_title"><font color="#003364">最新消息</font></h2>
+
+  <el-table :data="tableDataNEWS.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'date', order: 'descending'}" :show-header=false>
+    <el-table-column prop="date"></el-table-column>
+    <el-table-column prop="title"></el-table-column>
+    <el-table-column prop="link">
+      <template slot-scope="scope">
+        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">開啟</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
   
   <el-row :gutter="20">
     <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8 ">
@@ -285,6 +296,22 @@
     HIT: 5
   }]
 
+  let news =[{
+    date: '2021-05-11',
+    title: '夢想家勝率重回五成',
+    link:'122.html'
+  },{
+    date: '2021-05-01',
+    title: '夢想家雨中慘敗',
+    link:'122.html'
+  },{
+    date: '2021-05-11',
+    title: '球經招募中',
+    link:'122.html'
+  }]
+
+  news.sort((a, b) => (b.date).localeCompare(a.date));
+
   console.log(tableData1)
 
 
@@ -305,6 +332,8 @@
         tableDataHLD: tableData1,
         tableDataERA: tableData1,
         tableDataSO: tableData1,
+
+        tableDataNEWS: news,
           
     
       };
