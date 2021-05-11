@@ -128,43 +128,43 @@
       <template>
 
         <el-tabs v-model="batter" @tab-click="batterClick">
-          <el-tab-pane label="打擊率" name="first">
-            <el-table :data="tableDataAvg" style="width: 100%" :row-class-name="tableRowClassName">
-              <el-table-column prop="numberAvg" label="背號"></el-table-column>
-              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
-              <el-table-column prop="Avg" label="打擊率"></el-table-column>
+          <el-tab-pane label="打擊率" name="AVG">
+            <el-table :data="tableDataAVG.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'AVG', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="AVG" label="打擊率"></el-table-column>
             </el-table>
           </el-tab-pane>
 
-          <el-tab-pane label="打點" name="second">
-            <el-table :data="tableDataRbi" style="width: 100%" :row-class-name="tableRowClassName">
-              <el-table-column prop="numberAvg" label="背號"></el-table-column>
-              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
-              <el-table-column prop="Avg" label="打點"></el-table-column>
+          <el-tab-pane label="打點" name="RBI">
+            <el-table :data="tableDataRBI.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'RBI', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="RBI" label="打點"></el-table-column>
             </el-table>
           </el-tab-pane>
 
-          <el-tab-pane label="全壘打" name="third">
-            <el-table :data="tableDataHr" style="width: 100%" :row-class-name="tableRowClassName">
-              <el-table-column prop="numberAvg" label="背號"></el-table-column>
-              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
-              <el-table-column prop="Avg" label="全壘打"></el-table-column>
+          <el-tab-pane label="全壘打" name="HR">
+            <el-table :data="tableDataHR.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HR', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="HR" label="全壘打"></el-table-column>
             </el-table>
           </el-tab-pane>
 
-          <el-tab-pane label="安打" name="fourth">
-            <el-table :data="tableDataHit" style="width: 100%" :row-class-name="tableRowClassName">
-              <el-table-column prop="numberAvg" label="背號"></el-table-column>
-              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
-              <el-table-column prop="Avg" label="安打"></el-table-column>
+          <el-tab-pane label="安打" name="HIT">
+            <el-table :data="tableDataHIT.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HIT', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="HIT" label="安打"></el-table-column>
             </el-table>
           </el-tab-pane>
 
-          <el-tab-pane label="盜壘" name="fifth">
-            <el-table :data="tableDataSb" style="width: 100%" :row-class-name="tableRowClassName">
-              <el-table-column prop="numberAvg" label="背號"></el-table-column>
-              <el-table-column prop="nameAvg" label="姓名"></el-table-column>
-              <el-table-column prop="Avg" label="盜壘"></el-table-column>
+          <el-tab-pane label="盜壘" name="SB">
+            <el-table :data="tableDataSB.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SB', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="SB" label="盜壘"></el-table-column>
             </el-table>
           </el-tab-pane>
         </el-tabs>
@@ -178,11 +178,41 @@
       <template>
 
         <el-tabs v-model="pitcher" @tab-click="pitcherClick">
-          <el-tab-pane label="勝投" name="first">打擊率</el-tab-pane>
-          <el-tab-pane label="救援" name="second">打點</el-tab-pane>
-          <el-tab-pane label="中繼" name="third">全壘打</el-tab-pane>
-          <el-tab-pane label="防禦率" name="fourth">安打</el-tab-pane>
-          <el-tab-pane label="三振" name="fifth">盜壘</el-tab-pane>
+          <el-tab-pane label="勝投" name="first">
+            <el-table :data="tableDataWIN.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'WIN', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="WIN" label="勝投"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="救援" name="second">
+            <el-table :data="tableDataSV.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="SV" label="勝投"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="中繼" name="third">
+            <el-table :data="tableDataHLD.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HLD', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="HLD" label="勝投"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="防禦率" name="fourth">
+            <el-table :data="tableDataERA.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'ERA', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="ERA" label="勝投"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="三振" name="fifth">
+            <el-table :data="tableDataSO.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SO', order: 'descending'}">
+              <el-table-column prop="number" label="背號"></el-table-column>
+              <el-table-column prop="name" label="姓名"></el-table-column>
+              <el-table-column prop="SO" label="勝投"></el-table-column>
+            </el-table>
+          </el-tab-pane>
         </el-tabs>
         
       </template>
@@ -206,13 +236,53 @@
 
 <script>
   let tableData1 = [{
-    numberAvg: '26',
-    nameAvg: '呂皇毅',
-    Avg: '0.455',
+    number: '26',
+    name: '呂皇毅',
+    AVG: '0.455',
+    HR: 2,
+    SB: 8,
+    RBI: 2,
+    HIT: 5
   }, {
-    numberAvg: '24',
-    nameAvg: '馮昱雲',
-    Avg: '0.400'
+    number: '24',
+    name: '馮昱雲',
+    AVG: '0.400',
+    HR: 3,
+    SB: 8,
+    RBI: 5,
+    HIT:6
+  },{
+    number: '7',
+    name: '王立勝',
+    AVG: '0.355',
+    HR: 20,
+    SB: 4,
+    RBI: 2,
+    HIT: 21
+  },{
+    number: '26',
+    name: '呂皇毅',
+    AVG: '0.455',
+    HR: 2,
+    SB: 8,
+    RBI: 2,
+    HIT: 5
+  },{
+    number: '26',
+    name: '呂皇毅',
+    AVG: '0.455',
+    HR: 2,
+    SB: 8,
+    RBI: 2,
+    HIT: 5
+  },{
+    number: '26',
+    name: '呂皇毅',
+    AVG: '0.455',
+    HR: 2,
+    SB: 8,
+    RBI: 2,
+    HIT: 5
   }]
 
   console.log(tableData1)
@@ -222,21 +292,26 @@
   var Main = {
     data() {
       return {
-        batter: 'first',
+        batter: 'AVG',
         pitcher: 'first',
-        tableDataAvg: tableData1,
-        tableDataRbi: tableData1,
-        tableDataHr: tableData1,
-        tableDataHit: tableData1,
-        tableDataSb: tableData1,
+        tableDataAVG: tableData1,
+        tableDataRBI: tableData1,
+        tableDataHR: tableData1,
+        tableDataHIT: tableData1,
+        tableDataSB: tableData1,
+
+        tableDataWIN: tableData1,
+        tableDataSV: tableData1,
+        tableDataHLD: tableData1,
+        tableDataERA: tableData1,
+        tableDataSO: tableData1,
           
     
       };
 
     },methods: {
       batterClick(tab, event) {
-        console.log(tab, event);
-        console.log(this.tableData[0])
+       
       },
       pitcherClick(tab, event) {
         console.log(tab, event);
