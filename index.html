@@ -53,6 +53,10 @@
 
 <link href="https://tafengtravel.github.io/tafengtravel/index/css/book.css" rel="stylesheet" />
 
+<!-- axios -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
+
+
 
 </head>
 <body>
@@ -237,10 +241,10 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataSO.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SO', order: 'descending'}">
+            <el-table :data="tableDataK.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'K', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
-              <el-table-column prop="SO" label="勝投"></el-table-column>
+              <el-table-column prop="K" label="三振"></el-table-column>
             </el-table>
           </el-tab-pane>
 
@@ -335,6 +339,25 @@
   console.log(tableData1)
 
 
+  var selectedFile = document.getElementById("files").files[0];//獲取讀取的File物件
+  var name = selectedFile.name;//讀取選中檔案的檔名
+  var size = selectedFile.size;//讀取選中檔案的大小
+  console.log("檔名:"+name+"大小："+size);
+  var reader = new FileReader();//這裡是核心！！！讀取操作就是由它完成的。
+  reader.readAsText(selectedFile);//讀取檔案的內容
+
+  reader.onload = function(docDATA){
+
+      console.log("讀取結果轉為JSON：");
+
+
+      console.log((Object.keys(docDATA)).length);
+      console.log(docDATA)
+
+      
+  };
+
+
 
   var Main = {
     data() {
@@ -351,7 +374,7 @@
         tableDataSV: tableData1,
         tableDataHLD: tableData1,
         tableDataERA: tableData1,
-        tableDataSO: tableData1,
+        tableDataK: tableData1,
 
         tableDataNEWS: news,
           
