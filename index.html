@@ -25,7 +25,6 @@
 <link href="index.css" rel="stylesheet" >
 <!-- home banner -->
 
-
 <script src="js/jquery.min.js.js"></script>     
 <script src="js/slick.js"></script>
 <script src="js/aos.js"></script>
@@ -85,9 +84,9 @@
 
 
 
-<nav class="main-nav" role="navigation">
+<!-- <nav class="main-nav" role="navigation">
 
-  <!-- Mobile menu toggle button (hamburger/x icon) -->
+  
   <input id="main-menu-state" type="checkbox" />
   <label class="main-menu-btn" for="main-menu-state">
     <span class="main-menu-btn-icon"></span> 
@@ -95,7 +94,7 @@
 
   <h2 class="nav-brand"><img src="dreamer.png"  width="132" height="50"  ></h2>
 
-  <!-- Sample menu definition -->
+  
   <ul id="main-menu" class="sm sm-mint">
     <li><a href="home.html">首頁</a></li>
     <li><a href="#">球員資料</a>
@@ -109,7 +108,9 @@
     </li>
 
   </ul>
-</nav>
+</nav> -->
+
+<div class="include" file="https://kevin860320.github.io/dreamer/top.html"></div>
 
 <div id="pnl_wrapper" class="wrapper homepage green-page">
 
@@ -475,6 +476,19 @@ new Ctor().$mount('#app')
 
   
     
+</script>
+
+<script type="text/javascript">
+
+  //使用jQuery的load方法
+  $(".include").each(function(){
+      if(!!$(this).attr("file")) {
+          var $includeObj = $(this);
+          $(this).load($(this).attr("file"), function(html){
+              $includeObj.after(html).remove();    //載入的檔案內容寫入到當前標籤後面並移除當前標籤
+          })
+      }
+  });
 </script>
 
 
