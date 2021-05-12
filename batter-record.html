@@ -120,10 +120,10 @@
 
   <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-lg-24">
     
-  <el-row></el-row>
+    <el-row></el-row>
     <h2 class ="sub_title"><font color="#003364">打者成績</font></h2>
 
-    <el-table :data="tableDataBatter" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'number', order: 'ascending'}" empty-text="沒有資料">
+    <el-table :data="tableDataBatter" height="550px" style="width: 100%" height="250" :row-class-name="tableRowClassName" :default-sort = "{prop: 'number', order: 'ascending'}" empty-text="沒有資料">
       <el-table-column prop="number" label="背號" sortable :sort-method = "(a,b)=>{return a.number - b.number}"></el-table-column></el-table-column>
       <el-table-column prop="name" label="姓名" sortable :sort-method = "(a,b)=>{return a.name - b.name}"></el-table-column></el-table-column>
       <el-table-column prop="GP" label="出賽" sortable :sort-method = "(a,b)=>{return a.GP - b.GP}"></el-table-column>
@@ -154,6 +154,7 @@
         batter: 'AVG',
         pitcher: 'first',
         tableDataBatter: [],
+        tableHeight: 0,
       };
 
     },methods: {
@@ -185,6 +186,11 @@
       .catch( (err) => {
         console.log(err);
       });
+
+      this.$nextTick(() => {
+        this.tableHeight = window.innerHeight - 50;
+        //后面的50：根据需求空出的高度，自行调整
+      })
     }
 };
 
