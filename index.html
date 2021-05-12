@@ -160,10 +160,7 @@
           </el-tab-pane>
 
           <el-tab-pane label="全壘打" name="HR">
-            <template slot="empty">
-              <span>沒有資料</span>
-            </template>
-            <el-table :data="tableDataHR" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HR', order: 'descending'}">
+            <el-table :data="tableDataHR" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HR', order: 'descending'}" empty-text="沒有資料">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="HR" label="全壘打"></el-table-column>
@@ -198,9 +195,6 @@
         <el-tabs v-model="pitcher" @tab-click="pitcherClick">
           <el-tab-pane label="勝投" name="first">
             <el-table :data="tableDataW" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'W', order: 'descending'}">
-              <template slot="empty">
-                <span>沒有資料</span>
-              </template>
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="W" label="勝投"></el-table-column>
@@ -208,10 +202,7 @@
           </el-tab-pane>
 
           <el-tab-pane label="救援" name="second">
-            <template slot="empty">
-              <span>沒有資料</span>
-            </template>
-            <el-table :data="tableDataSV" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}">
+            <el-table :data="tableDataSV" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}" empty-text="沒有資料">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="SV" label="勝投"></el-table-column>
@@ -219,9 +210,6 @@
           </el-tab-pane>
 
           <el-tab-pane label="中繼" name="third">
-            <template slot="empty">
-              <span>沒有資料</span>
-            </template>
             <el-table :data="tableDataHLD" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HLD', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
@@ -230,9 +218,6 @@
           </el-tab-pane>
 
           <el-tab-pane label="防禦率" name="fourth">
-            <template slot="empty">
-              <span>沒有資料</span>
-            </template>
             <el-table :data="tableDataERA" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'ERA', order: 'ascending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
@@ -241,9 +226,6 @@
           </el-tab-pane>
 
           <el-tab-pane label="三振" name="fifth">
-            <template slot="empty">
-              <span>沒有資料</span>
-            </template>
             <el-table :data="tableDataK" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'K', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
@@ -404,6 +386,10 @@
         this.tableDataHIT = this.tableDataHIT.slice(0,5)
         this.tableDataSB = this.tableDataSB.sort((a, b) => (b.SB).localeCompare(a.SB));
         this.tableDataSB = this.tableDataSB.slice(0,5)
+
+        if(this.tableDataHR[0].HR == '0'){
+          this.tableDataHR = []
+        }
        
       })
       .catch( (err) => {
@@ -434,6 +420,10 @@
         this.tableDataERA = this.tableDataERA.slice(0,5)
         this.tableDataK = this.tableDataK.sort((a, b) => (b.K - a.K));
         this.tableDataK = this.tableDataK.slice(0,5)
+
+        if(this.tableDataSV[0].SV == '0'){
+          this.tableDataSV = []
+        }
         
       })
       .catch( (err) => {
