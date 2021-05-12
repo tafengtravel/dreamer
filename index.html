@@ -144,7 +144,7 @@
 
         <el-tabs v-model="batter" @tab-click="batterClick">
           <el-tab-pane label="打擊率" name="AVG">
-            <el-table :data="tableDataAVG.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" >
+            <el-table :data="tableDataAVG" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'AVG', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="AVG" label="打擊率"></el-table-column>
@@ -152,7 +152,7 @@
           </el-tab-pane>
 
           <el-tab-pane label="打點" name="RBI">
-            <el-table :data="tableDataRBI.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'RBI', order: 'descending'}">
+            <el-table :data="tableDataRBI" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'RBI', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="RBI" label="打點"></el-table-column>
@@ -163,7 +163,7 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataHR.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HR', order: 'descending'}">
+            <el-table :data="tableDataHR" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HR', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="HR" label="全壘打"></el-table-column>
@@ -171,7 +171,7 @@
           </el-tab-pane>
 
           <el-tab-pane label="安打" name="HIT">
-            <el-table :data="tableDataHIT.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HIT', order: 'descending'}">
+            <el-table :data="tableDataHIT" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HIT', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="HIT" label="安打"></el-table-column>
@@ -179,7 +179,7 @@
           </el-tab-pane>
 
           <el-tab-pane label="盜壘" name="SB">
-            <el-table :data="tableDataSB.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SB', order: 'descending'}">
+            <el-table :data="tableDataSB" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SB', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="SB" label="盜壘"></el-table-column>
@@ -197,7 +197,7 @@
 
         <el-tabs v-model="pitcher" @tab-click="pitcherClick">
           <el-tab-pane label="勝投" name="first">
-            <el-table :data="tableDataW.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'W', order: 'descending'}">
+            <el-table :data="tableDataW" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'W', order: 'descending'}">
               <template slot="empty">
                 <span>沒有資料</span>
               </template>
@@ -211,7 +211,7 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataSV.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}">
+            <el-table :data="tableDataSV" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'SV', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="SV" label="勝投"></el-table-column>
@@ -222,7 +222,7 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataHLD.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HLD', order: 'descending'}">
+            <el-table :data="tableDataHLD" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'HLD', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="HLD" label="勝投"></el-table-column>
@@ -233,7 +233,7 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataERA.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'ERA', order: 'descending'}">
+            <el-table :data="tableDataERA" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'ERA', order: 'ascending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="ERA" label="勝投"></el-table-column>
@@ -244,7 +244,7 @@
             <template slot="empty">
               <span>沒有資料</span>
             </template>
-            <el-table :data="tableDataK.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'K', order: 'descending'}">
+            <el-table :data="tableDataK" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'K', order: 'descending'}">
               <el-table-column prop="number" label="背號"></el-table-column>
               <el-table-column prop="name" label="姓名"></el-table-column>
               <el-table-column prop="K" label="三振"></el-table-column>
@@ -291,107 +291,161 @@
     link:'122.html'
   }]
 
-  getJson() 
+  // getJson() 
 
-  async function getJson(){
-    var batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
-    var pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
+  // async function getJson(){
+  //   var batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
+  //   var pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
 
-    await axios.get(batterUrl)
-    .then( (res) => {
-      batterData = res.data
-    })
-    .catch( (err) => {
-      console.log(err);
-    });
+  //   await axios.get(batterUrl)
+  //   .then( (res) => {
+  //     batterData = res.data
+  //   })
+  //   .catch( (err) => {
+  //     console.log(err);
+  //   });
 
-    await axios.get(pitcherUrl)
-    .then( (res) => {
-      pitcherData = res.data
-    })
-    .catch( (err) => {
-      console.log(err);
-    });
-    console.log(pitcherData)
-    sort()    
-  }
+  //   await axios.get(pitcherUrl)
+  //   .then( (res) => {
+  //     pitcherData = res.data
+  //   })
+  //   .catch( (err) => {
+  //     console.log(err);
+  //   });
+  //   console.log(pitcherData)
+  //   sort()    
+  // }
 
-  async function sort(){
-    sortBatterAVG = batterData
-    sortBatterRBI = batterData
-    sortBatterHR = batterData
-    sortBatterHIT = batterData
-    sortBatterSB = batterData
+  // async function sort(){
+    // sortBatterAVG = batterData
+    // sortBatterRBI = batterData
+    // sortBatterHR = batterData
+    // sortBatterHIT = batterData
+    // sortBatterSB = batterData
 
-    sortPitcherW = pitcherData
-    sortPitcherSV = pitcherData
-    sortPitcherHLD = pitcherData
-    sortPitcherERA = pitcherData
-    sortPitcherK = pitcherData
+    // sortPitcherW = pitcherData
+    // sortPitcherSV = pitcherData
+    // sortPitcherHLD = pitcherData
+    // sortPitcherERA = pitcherData
+    // sortPitcherK = pitcherData
 
-    await sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
-    await sortBatterRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
-    await sortBatterHR.sort((a, b) => (b.HR).localeCompare(a.HR));
-    await sortBatterHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
-    await sortBatterSB.sort((a, b) => (b.SB).localeCompare(a.SB));
-    await sortPitcherW.sort((a, b) => (b.W).localeCompare(a.W));
-    await sortPitcherSV.sort((a, b) => (b.SV).localeCompare(a.SV));
-    await sortPitcherHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
-    await sortPitcherERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
-    await sortPitcherK.sort((a, b) => (b.K).localeCompare(a.K));
+    //  sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
+    //  sortBatterRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
+    //  sortBatterHR.sort((a, b) => (b.HR).localeCompare(a.HR));
+    //  sortBatterHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
+    //  sortBatterSB.sort((a, b) => (b.SB).localeCompare(a.SB));
+    //  sortPitcherW.sort((a, b) => (b.W).localeCompare(a.W));
+    //  sortPitcherSV.sort((a, b) => (b.SV).localeCompare(a.SV));
+    //  sortPitcherHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
+    //  sortPitcherERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
+    //  sortPitcherK.sort((a, b) => (b.K).localeCompare(a.K));
 
-    news.sort((a, b) => (b.date).localeCompare(a.date));
+  //   news.sort((a, b) => (b.date).localeCompare(a.date));
     
-    await vue()
-  }
+  //   await vue()
+  // }
   
-  
 
-  function vue(){
+  var Main = {
+    data() {
+      return {
+        batter: 'AVG',
+        pitcher: 'first',
+        tableDataAVG: [],
+        tableDataRBI: [],
+        tableDataHR: [],
+        tableDataHIT: [],
+        tableDataSB: [],
 
-    var Main = {
-      data() {
-        return {
-          batter: 'AVG',
-          pitcher: 'first',
-          tableDataAVG: batterData,
-          tableDataRBI: batterData,
-          tableDataHR: batterData,
-          tableDataHIT: batterData,
-          tableDataSB: batterData,
+        tableDataW: [],
+        tableDataSV: [],
+        tableDataHLD: [],
+        tableDataERA: [],
+        tableDataK: [],
 
-          tableDataW: sortPitcherW,
-          tableDataSV: sortPitcherSV,
-          tableDataHLD: sortPitcherHLD,
-          tableDataERA: sortPitcherERA,
-          tableDataK: sortPitcherK,
+        tableDataNEWS: news,            
+    
+      };
 
-          tableDataNEWS: news,            
-      
-        };
-
-      },methods: {
-        batterClick(tab, event) {
-          sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
-        },
-        pitcherClick(tab, event) {
-          console.log();
-        },
-        tableRowClassName({row, rowIndex}) {
-          if (rowIndex%2 === 1) {
-            return 'color-row';
-          } 
-          return '';
-        },
-      },created(){
-        
+    },methods: {
+      batterClick(tab, event) {
+        console.log();
+      },
+      pitcherClick(tab, event) {
+        console.log();
+      },
+      tableRowClassName({row, rowIndex}) {
+        if (rowIndex%2 === 1) {
+          return 'color-row';
+        } 
+        return '';
       }
-  };
+    },mounted(){
+      let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
+      let pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
 
-  var Ctor = Vue.extend(Main)
-  new Ctor().$mount('#app')
+      axios.get(batterUrl)
+      .then( (res) => {
+        batterData = res.data
 
-  }
+        this.tableDataAVG = batterData
+        this.tableDataRBI = batterData
+        this.tableDataHR = batterData
+        this.tableDataHIT = batterData
+        this.tableDataSB = batterData    
+      
+        this.tableDataAVG = this.tableDataAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
+        this.tableDataAVG = this.tableDataAVG.slice(0,5)
+        this.tableDataRBI = this.tableDataRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
+        this.tableDataRBI = this.tableDataRBI.slice(0,5)
+        this.tableDataHR = this.tableDataHR.sort((a, b) => (b.HR).localeCompare(a.HR));
+        this.tableDataHR = this.tableDataHR.slice(0,5)
+        this.tableDataHIT = this.tableDataHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
+        this.tableDataHIT = this.tableDataHIT.slice(0,5)
+        this.tableDataSB = this.tableDataSB.sort((a, b) => (b.SB).localeCompare(a.SB));
+        this.tableDataSB = this.tableDataSB.slice(0,5)
+       
+      })
+      .catch( (err) => {
+        console.log(err);
+      });
+
+      axios.get(pitcherUrl)
+      .then( (res) => {
+        pitcherData = res.data
+
+        this.tableDataW = pitcherData
+        this.tableDataSV = pitcherData
+        this.tableDataHLD = pitcherData
+        this.tableDataERA = pitcherData
+        this.tableDataK = pitcherData
+
+        for(i=0;i<this.tableDataK.length;i++){
+          this.tableDataK[i].K = parseInt(this.tableDataK[i].K)
+        }//K STRING比對有問題 要先轉成INT
+
+        this.tableDataW = this.tableDataW.sort((a, b) => (b.W).localeCompare(a.W));
+        this.tableDataW = this.tableDataW.slice(0,5)
+        this.tableDataSV = this.tableDataSV.sort((a, b) => (b.SV).localeCompare(a.SV));
+        this.tableDataSV = this.tableDataSV.slice(0,5)
+        this.tableDataHLD = this.tableDataHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
+        this.tableDataHLD = this.tableDataHLD.slice(0,5)
+        this.tableDataERA = this.tableDataERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
+        this.tableDataERA = this.tableDataERA.slice(0,5)
+        this.tableDataK = this.tableDataK.sort((a, b) => (b.K - a.K));
+        this.tableDataK = this.tableDataK.slice(0,5)
+        
+      })
+      .catch( (err) => {
+        console.log(err);
+      });
+    }
+};
+
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+
+  
 
   
     
