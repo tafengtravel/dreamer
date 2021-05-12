@@ -375,6 +375,16 @@
         this.tableDataHR = batterData
         this.tableDataHIT = batterData
         this.tableDataSB = batterData    
+
+        //只採計PA > 4的
+        for (i=0;i<this.tableDataAVG.length;i++){
+          if (parseInt(this.tableDataAVG[i].PA) < 5 ){
+            console.log(this.tableDataAVG[i].name)
+            this.tableDataAVG.splice(i,1)
+            i=i-1
+          }
+        }
+        console.log(this.tableDataAVG)
       
         this.tableDataAVG = this.tableDataAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
         this.tableDataAVG = this.tableDataAVG.slice(0,5)
