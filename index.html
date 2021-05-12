@@ -131,9 +131,9 @@
   <h2 class ="sub_title"><font color="#003364">最新消息</font></h2>
 
   <el-table :data="tableDataNEWS.slice(0,5)" style="width: 100%" :row-class-name="tableRowClassName" :default-sort = "{prop: 'date', order: 'descending'}" :show-header=false>
-    <el-table-column prop="date"></el-table-column>
-    <el-table-column prop="title"></el-table-column>
-    <el-table-column prop="link">
+    <el-table-column prop="date"width='120%'></el-table-column>
+    <el-table-column prop="title" ></el-table-column>
+    <el-table-column prop="link" width='120%'>
       <template slot-scope="scope">
         <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">開啟</el-button>
       </template>
