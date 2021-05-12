@@ -271,15 +271,15 @@
   let news =[{
     date: '2021-05-05',
     title: '夢想家勝率重回五成',
-    link:'122.html'
+    link:'https://www.facebook.com/DremersBaseballclub/photos/a.139380911191671/287483513048076/'
   },{
     date: '2021-05-11',
     title: '夢想家雨中慘敗',
-    link:'122.html'
+    link:'https://www.facebook.com/DremersBaseballclub/photos/a.139380911191671/282696666860094/'
   },{
     date: '2021-05-11',
     title: '球經招募中',
-    link:'122.html'
+    link:'https://www.facebook.com/DremersBaseballclub'
   }]
 
   // getJson() 
@@ -373,6 +373,10 @@
           return 'color-row';
         } 
         return '';
+      },handleEdit(index,row){
+        window.open(row.link);
+        
+
       }
     },mounted(){
       let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
