@@ -140,7 +140,69 @@
     </el-table-column>
   </el-table>
   
+
+
+    <el-row :gutter="20">
+      <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-12 ">
+
+        <h2 class ="sub_title"><font color="#003364">賽事預告</font></h2>
+        
+          <el-card class="box-card">
+            <el-row></el-row>
+            <el-col class ="el-col el-col-10 el-col-xs-10 el-col-sm-10 el-col-lg-10 ">
+              <h3 class ="title" style ="text-align: center"><font color="#003364">{{nextTeam}}</font></h2>
+            </el-col>
+            <el-col class ="el-col el-col-4 el-col-xs-4 el-col-sm-4 el-col-lg-4 ">
+              <h2 class ="sub_title" style ="text-align: center"><font color="#003364">V.S</font></h2>
+            </el-col>
+            <el-col class ="el-col el-col-10 el-col-xs-10 el-col-sm-10 el-col-lg-10 ">
+              <h3 class ="title" style ="text-align: center"><font color="#003364">夢想家</font></h2>
+            </el-col>
+
+            <el-row></el-row>
+
+            <el-col class ="el-col">
+              <h2 class ="font" style ="text-align: center">陽明棒球場<br>{{nextDate}} {{nextTime}}</h2>
+            </el-col>
+
+            <el-row></el-row>
+          
+          </el-card>
+
+      </el-col>
+    
+
+      <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-12 ">
+        
+        <h2 class ="sub_title"><font color="#003364">最近賽事</font></h2>
+
+          <el-card class="box-card">
+            <el-row></el-row>
+            <el-col class ="el-col el-col-9 el-col-xs-9 el-col-sm-9 el-col-lg-9 ">
+              <h3 class ="title" style ="text-align: center"><font color="#003364">{{lastTeam}}</font></h2>
+            </el-col>
+            <el-col class ="el-col el-col-6 el-col-xs-6 el-col-sm-6 el-col-lg-6 ">
+              <h2 class ="sub_title" style ="text-align: center"><font color="#003364">{{competitorScore}} - {{ourScore}}</font></h2>
+            </el-col>
+            <el-col class ="el-col el-col-9 el-col-xs-9 el-col-sm-9 el-col-lg-9 ">
+              <h3 class ="title" style ="text-align: center"><font color="#003364">夢想家</font></h2>
+            </el-col>
+
+            <el-row></el-row>
+
+            <el-col class ="el-col">
+              <h2 class ="font" style ="text-align: center">陽明棒球場<br>{{lastDate}}</h2>
+            </el-col>
+
+            <el-row></el-row>
+              
+          </el-card>
+
+      </el-col>
+  </el-row>
+
   <el-row :gutter="20">
+
     <el-col class ="el-col el-col-8 el-col-xs-24 el-col-sm-24 el-col-lg-8 ">
       
       <h2 class ="sub_title"><font color="#003364">打擊排行</font></h2>
@@ -361,7 +423,16 @@
         
         tableDataRank: [],
 
-        tableDataNEWS: news,            
+        tableDataNEWS: news,   
+        nextTeam: '阿帕契',         
+        nextDate: '05/23',
+        nextTime: '14:20',
+
+        lastTeam:'SNT',
+        competitorScore:'4',
+        ourScore:'15',
+        lastDate:'05/02'
+
     
       };
 
