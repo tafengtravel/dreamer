@@ -333,9 +333,11 @@
 
 
 <script>
-  let batterData;let pitcherData;let rankData
+  let batterData;let pitcherData;let rankData;let teamScore
   let sortBatterAVG;let sortBatterRBI;let sortBatterHR;let sortBatterHIT;let sortBatterSB;
   let sortPitcherW;let sortPitcherSV;let sortPitcherHLD;let sortPitcherERA;let sortPitcherK
+  let markDate
+
 
   let news =[{
     date: '2021-05-08',
@@ -351,60 +353,7 @@
     link:'https://www.instagram.com/kevin860320/'
   }]
 
-  // getJson() 
-
-  // async function getJson(){
-  //   var batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
-  //   var pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
-
-  //   await axios.get(batterUrl)
-  //   .then( (res) => {
-  //     batterData = res.data
-  //   })
-  //   .catch( (err) => {
-  //     console.log(err);
-  //   });
-
-  //   await axios.get(pitcherUrl)
-  //   .then( (res) => {
-  //     pitcherData = res.data
-  //   })
-  //   .catch( (err) => {
-  //     console.log(err);
-  //   });
-  //   console.log(pitcherData)
-  //   sort()    
-  // }
-
-  // async function sort(){
-    // sortBatterAVG = batterData
-    // sortBatterRBI = batterData
-    // sortBatterHR = batterData
-    // sortBatterHIT = batterData
-    // sortBatterSB = batterData
-
-    // sortPitcherW = pitcherData
-    // sortPitcherSV = pitcherData
-    // sortPitcherHLD = pitcherData
-    // sortPitcherERA = pitcherData
-    // sortPitcherK = pitcherData
-
-    //  sortBatterAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
-    //  sortBatterRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
-    //  sortBatterHR.sort((a, b) => (b.HR).localeCompare(a.HR));
-    //  sortBatterHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
-    //  sortBatterSB.sort((a, b) => (b.SB).localeCompare(a.SB));
-    //  sortPitcherW.sort((a, b) => (b.W).localeCompare(a.W));
-    //  sortPitcherSV.sort((a, b) => (b.SV).localeCompare(a.SV));
-    //  sortPitcherHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
-    //  sortPitcherERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
-    //  sortPitcherK.sort((a, b) => (b.K).localeCompare(a.K));
-
-  //   news.sort((a, b) => (b.date).localeCompare(a.date));
-    
-  //   await vue()
-  // }
-  
+   
   news.sort((a, b) => (b.date).localeCompare(a.date));
 
   var Main = {
@@ -427,14 +376,14 @@
         tableDataRank: [],
 
         tableDataNEWS: news,   
-        nextTeam: '阿帕契',         
-        nextDate: '05/23',
-        nextTime: '14:20',
+        nextTeam: '',         
+        nextDate: '',
+        nextTime: '',
 
-        lastTeam:'SNT',
-        competitorScore:'4',
-        ourScore:'15',
-        lastDate:'05/02'
+        lastTeam:'',
+        competitorScore:'',
+        ourScore:'',
+        lastDate:''
 
     
       };
@@ -460,6 +409,7 @@
       let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
       let pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
       let rankUrl= "https://kevin860320.github.io/dreamer/rank.json"
+      let teamScoreUrl= "https://kevin860320.github.io/dreamer/teamScore.json"
 
       axios.get(batterUrl)
       .then( (res) => {
@@ -543,6 +493,36 @@
       .catch( (err) => {
         console.log(err);
       });
+
+      axios.get(teamScoreUrl)
+      .then( (res) => {
+        teamScore = res.data
+        
+        for(i=0;i<teamScore.length;i++){
+          teamScore[i].date = new Date(teamScore[i].date)
+        }
+        
+        for(i=0;i<teamScore.length;i++){
+          if(teamScore[i].date > new Date()){
+            markDate = i
+            break;
+          }
+        }
+        console.log(markDate)
+        this.nextTeam = teamScore[markDate].team
+        this.nextDate = (teamScore[markDate].date).getMonth()+1 +'/'+(teamScore[markDate].date).getDate()
+        this.nextTime = teamScore[markDate].time
+        this.lastTeam = teamScore[markDate-1].team
+        this.competitorScore = teamScore[markDate-1].competitorScore
+        this.ourScore = teamScore[markDate-1].ourScore
+        this.lastDate = (teamScore[markDate-1].date).getMonth()+1 +'/'+(teamScore[markDate-1].date).getDate()
+      })
+      .catch( (err) => {
+        console.log(err);
+      });
+
+
+
     }
 };
 
