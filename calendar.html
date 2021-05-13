@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>夢想家棒球隊</title>   	
+  <meta name="description" content="夢想家棒球隊，由一群熱愛打棒球的學生及社會人士組成，為高雄草野球聯盟一員">
+  <meta name="keywords" content="夢想家棒球隊，由一群熱愛打棒球的學生及社會人士組成，為高雄草野球聯盟一員" /> 
+ 
+  <meta http-equiv="cache-control" content="no-cache">  
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta name="format-detection" content="telephone=no">
+
+
+
+<link href='sm-css/sm-core-css.css' rel='stylesheet' type='text/css' />
+<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+<link href='sm-css/sm-mint/sm-mint.css' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+
+
+<link rel='stylesheet' href='css/smart.css' type='text/css'>
+<link rel='stylesheet' href='table.css' type='text/css'>
+
+<link href="index.css" rel="stylesheet" >
+<!-- home banner -->
+
+
+<script src="js/jquery.min.js.js"></script>     
+<script src="js/slick.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/smart-app-banner.js"></script>    
+<script src="js/mobile-detect.js"></script>
+
+<script src="js/functions.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+
+<script src="js/jquery.smartmenus.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+<link href="css/common.css" rel="stylesheet" />
+<link href="css/swiper.min.css" rel="stylesheet" />  
+
+<!-- vue+element ui -->
+<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui@2.15.0/lib/index.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link href="elementUI.css" rel="stylesheet" >
+
+<link href="https://tafengtravel.github.io/tafengtravel/index/css/book.css" rel="stylesheet" />
+
+<!-- axios -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
+
+
+
+</head>
+<body>
+
+
+       <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.14.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+   
+   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+
+<style>
+  .el-table .color-row {
+    background: #C9D6E0;
+  }
+  @media (max-width: 768px) {
+    .mobile{
+      font-size: 2px;
+      text-align: center;
+      
+    }
+    .desktop{
+      display:none;
+    }
+  }
+  @media (min-width: 768px) {
+    .mobile{
+      display:none;
+      
+    }
+    .desktop{
+      font-size: 15px;
+      text-align: center;
+      color: #003364;
+      font-family:微軟正黑體;
+      font-weight: bold;
+    }
+    .desktop1{
+      font-size: 15px;
+      text-align: center;
+      color: #003364;
+      font-family:微軟正黑體;
+      font-weight: bold;
+      line-height: 70px;
+    }
+    
+  }
+  .calendar-day{
+    text-align: center;
+    color: #003364;
+    line-height: 0px;
+    font-size: 12px;
+  }
+    
+
+
+    .el-calendar__header .el-calendar__title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 20px;
+    color: #003364;
+  }
+
+  .el-calendar-table thead th:before{
+      content: '周';
+  }
+
+  .el-calendar__button-group {
+      width: 100%;
+  }
+
+  .el-button-group {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .el-button-group::after, .el-button-group::before {
+      content: unset;
+  }
+
+  .el-button-group>.el-button:not(:first-child):not(:last-child) {
+      display: none;
+  }
+
+  .el-button-group>.el-button:first-child:before{
+      content: '<';
+  }
+
+  .el-button-group>.el-button:last-child:before{
+      content: '>';
+  }
+
+  .el-button-group>.el-button:first-child span, .el-button-group>.el-button:last-child span{
+      display: none;
+  }
+
+</style>
+
+
+
+<!-- <nav class="main-nav" role="navigation">
+
+  
+  <input id="main-menu-state" type="checkbox" />
+  <label class="main-menu-btn" for="main-menu-state">
+    <span class="main-menu-btn-icon"></span> 
+  </label>
+
+  <h2 class="nav-brand"><img src="dreamer.png"  width="132" height="50"  ></h2>
+
+  
+  <ul id="main-menu" class="sm sm-mint">
+    <li><a href="home.html">首頁</a></li>
+    <li><a href="#">球員資料</a>
+      
+    </li>
+    <li><a href="#">戰績排行</a>
+      
+    </li>
+    <li><a href="#">數據統計</a>
+      
+    </li>
+
+  </ul>
+</nav> -->
+
+<div class="include" file="https://kevin860320.github.io/dreamer/top.html"></div>
+
+
+
+<div id="app" class ="el-col el-col-24 el-col-xs-24 el-col-xs-offset-0 el-col-sm-24 el-col-sm-offset-0 el-col-lg-20 el-col-lg-offset-2"> 
+  
+
+  <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-lg-24">
+    
+    <el-row></el-row>
+    <h2 class ="sub_title"><font color="#003364">賽程表</font></h2>
+
+    <el-calendar v-model="valueDate" id="calendar" >
+      <template slot="dateCell" slot-scope="{date, data}">
+          <div>
+             <div class="calendar-day">{{ data.day.split('-').slice(2).join('-') }}</div>
+                <div v-for="item in calendarData">
+                  <div v-if="item.date == data.day">
+                    <div class="desktop1">{{item.result}}</div>
+                    <div class="desktop">{{item.team}}</div>
+                    <div class="desktop">{{item.time}}</div>
+                    <div class="desktop">{{item.field}}</div>
+                    <el-tooltip class="item" effect="dark" :content="item.detail" placement="right">
+                      <div class="mobile">●</div>
+                    </el-tooltip>
+                  </div>
+                  <div v-else></div>
+                </div>
+             </div>
+          </div>
+      </template>
+    </el-calendar>
+
+    <el-row></el-row>
+    
+  </el-col>
+  
+</div>
+
+<script>
+  let calendar;let markDate = 0 
+
+  var Main = {
+    data() {
+      return {
+        calendarData: [
+            {}
+        ],
+        valueDate: new Date(),
+      };
+
+    },methods: {
+      
+    },mounted(){
+      let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
+      let pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
+      let teamScore= "https://kevin860320.github.io/dreamer/teamScore.json"
+      let date
+      let month 
+      let day
+
+      axios.get(teamScore)
+      .then( (res) => {
+        calendar = res.data
+
+        for(i=0;i<calendar.length;i++){
+          calendar[i].date = new Date(calendar[i].date)
+        }
+        
+        for(i=0;i<calendar.length;i++){
+          if(calendar[i].date > new Date()){
+            markDate = i
+            break;
+          }
+        }
+
+        //已完賽----
+        for(i=0;i<markDate;i++){
+          this.calendarData[i] = {}
+
+          if(new Date(calendar[i].date).getMonth()+1 < 10){
+            month = '-0'
+          }else{
+            month = '-'
+          }
+
+          if(new Date(calendar[i].date).getDate() < 10){
+            day = '-0'
+          }else{
+            day = '-'
+          }
+
+          date = new Date(calendar[i].date).getFullYear()+month+(new Date(calendar[i].date).getMonth()+1)+day+new Date(calendar[i].date).getDate()
+
+          this.calendarData[i].date = date
+          this.calendarData[i].detail = '夢想家 '+calendar[i].ourScore+' - '+calendar[i].competitorScore+' '+ calendar[i].team
+          this.calendarData[i].result = this.calendarData[i].detail
+        }
+
+        //尚未比賽---
+        for(i=markDate;i<calendar.length;i++){
+          this.calendarData[i] = {}
+          
+          if(new Date(calendar[i].date).getMonth()+1 < 10){
+            month = '-0'
+          }else{
+            month = '-'
+          }
+
+          if(new Date(calendar[i].date).getDate() < 10){
+            day = '-0'
+          }else{
+            day = '-'
+          }
+
+          date = new Date(calendar[i].date).getFullYear()+month+(new Date(calendar[i].date).getMonth()+1)+day+new Date(calendar[i].date).getDate()
+
+          this.calendarData[i].date = date
+          this.calendarData[i].detail = '夢想家vs'+calendar[i].team+' '+calendar[i].time+' '+calendar[i].field+'棒球場'
+
+          this.calendarData[i].team = '夢想家vs'+calendar[i].team
+          this.calendarData[i].time = calendar[i].time
+          this.calendarData[i].field = calendar[i].field+'棒球場'
+
+        }
+        
+          console.log()
+
+        this.calendarData.reverse()
+        console.log(this.calendarData)
+
+
+        
+
+
+        // for(i=markDate;i<calendar.length;i++){
+
+
+        // }
+
+
+      })
+      .catch( (err) => {
+        console.log(err);
+      });
+
+      // this.$nextTick(() => {
+      //   this.tableHeight = window.innerHeight - 50;
+      //   //后面的50：根据需求空出的高度，自行调整
+      // })
+    }
+};
+
+var Ctor = Vue.extend(Main)
+new Ctor().$mount('#app')
+
+  
+</script>
+
+<script type="text/javascript">
+
+  //使用jQuery的load方法
+  $(".include").each(function(){
+      if(!!$(this).attr("file")) {
+          var $includeObj = $(this);
+          $(this).load($(this).attr("file"), function(html){
+              $includeObj.after(html).remove();    //載入的檔案內容寫入到當前標籤後面並移除當前標籤
+          })
+      }
+  });
+</script>
+
+
+</body>
+</html>
