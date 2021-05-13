@@ -1,0 +1,110 @@
+     [
+        {
+            "team": "綠夾克",
+            "date": "3/7/21",
+            "time": "14:20",
+            "field": "陽明",
+            "competitorScore": "9",
+            "ourScore": "7"
+        },
+        {
+            "team": "騰耀",
+            "date": "3/21/21",
+            "time": "11:40",
+            "field": "陽明",
+            "competitorScore": "4",
+            "ourScore": "3"
+        },
+        {
+            "team": "大社狼",
+            "date": "4/11/21",
+            "time": "9:00",
+            "field": "陽明",
+            "competitorScore": "1",
+            "ourScore": "10"
+        },
+        {
+            "team": "SWAT",
+            "date": "4/18/21",
+            "time": "9:00",
+            "field": "陽明",
+            "competitorScore": "4",
+            "ourScore": "11"
+        },
+        {
+            "team": "鳳翔",
+            "date": "4/25/21",
+            "time": "14:50",
+            "field": "頂庄",
+            "competitorScore": "9",
+            "ourScore": "7"
+        },
+        {
+            "team": "SNT",
+            "date": "5/2/21",
+            "time": "11:40",
+            "field": "陽明",
+            "competitorScore": "4",
+            "ourScore": "15"
+        },
+        {
+            "team": "阿帕契",
+            "date": "5/23/21",
+            "time": "14:20",
+            "field": "陽明"
+        },
+        {
+            "team": "翔太",
+            "date": "5/30/21",
+            "time": "14:20",
+            "field": "岡山"
+        },
+        {
+            "team": "尚勤",
+            "date": "7/4/21",
+            "time": "9:00",
+            "field": "岡山"
+        },
+        {
+            "team": "綠夾克",
+            "date": "7/25/21",
+            "time": "12:10",
+            "field": "陽明"
+        },
+        {
+            "team": "雄鷹",
+            "date": "8/1/21",
+            "time": "9:00",
+            "field": "岡山"
+        },
+        {
+            "team": "大社狼",
+            "date": "8/15/21",
+            "time": "11:40",
+            "field": "陽明"
+        },
+        {
+            "team": "SWAT",
+            "date": "8/22/21",
+            "time": "11:40",
+            "field": "陽明"
+        },
+        {
+            "team": "SNT",
+            "date": "9/5/21",
+            "time": "14:20",
+            "field": "陽明"
+        },
+        {
+            "team": "麻吉熊",
+            "date": "9/12/21",
+            "time": "11:40",
+            "field": "陽明"
+        },
+        {
+            "team": "阿帕契",
+            "date": "9/26/21",
+            "time": "9:00",
+            "field": "陽明"
+        }
+    ]
