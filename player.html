@@ -204,21 +204,30 @@
       
       
       <h2 class ="sub_title"><font color="#003364">球員資料</font></h2>
+      <div>
+        <div v-for="item in player" :key="item">
+          <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-md-12 el-col-lg-8 ">
 
-      <div v-for="item in player" :key="item">
-        <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-md-12 el-col-lg-8 ">
+            <el-card class="box-card" style="min-height: 250px;" >
+              <el-image class ="el-col-5" style="width:130px ; height: 210px" :src="'player_image/'+item.number+'.png'" ></el-image>
+              <div class ="el-col-11">
+                <div class ="number">{{item.number}}</div>
+                <div class =" name">{{item.name}}</div>
+              </div>
+            </el-card>
 
-          <el-card class="box-card" style="min-height: 250px;" >
-            <el-image class ="el-col-5" style="width:130px ; height: 210px" :src="'player_image/'+item.number+'.png'" ></el-image>
-            <div class ="el-col-11">
-              <div class ="number">{{item.number}}</div>
-              <div class =" name">{{item.name}}</div>
-            </div>
-          </el-card>
-
+          </el-col>
+        </div>
+        <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-md-12 el-col-lg-24">
+          <div style="text-align:center" >
+          <el-pagination background
+            layout="prev, pager, next"
+            :total="40"
+            @current-change="setPage">
+          </el-pagination>
+        </div>
         </el-col>
       </div>
-
       
       
     </el-col>
@@ -231,6 +240,7 @@
 
 <script>
   let calendar;let markDate = 0 
+  let player
 
   var Main = {
     data() {
@@ -238,11 +248,19 @@
         player: [
             {}
         ],
+        player1:[
+          {}
+        ],
         valueDate: new Date(),
+        pageSize: 2,
       };
 
     },methods: {
-      
+      setPage (val) {
+        let player1 = this.player1 
+        console.log(val)
+        this.player = player1.slice((val-1)*9,val*9)
+      }
     },mounted(){
       let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
       let player
@@ -251,7 +269,10 @@
       axios.get(batterUrl)
       .then( (res) => {
         this.player = res.data
+        this.player1 = this.player
 
+        this.player = this.player1.slice(0,9)
+        
       })
       .catch( (err) => {
         console.log(err);
