@@ -335,7 +335,7 @@
 
 
 <script>
-  let batterData;let pitcherData;let rankData;let teamScore
+  let batterData = [];let pitcherData = [];let rankData = [];let teamScore
   let sortBatterAVG;let sortBatterRBI;let sortBatterHR;let sortBatterHIT;let sortBatterSB;
   let sortPitcherW;let sortPitcherSV;let sortPitcherHLD;let sortPitcherERA;let sortPitcherK
   let markDate
@@ -408,14 +408,32 @@
 
       }
     },mounted(){
-      let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
-      let pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
-      let rankUrl= "https://kevin860320.github.io/dreamer/rank.json"
+      let batterUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'batter'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let pitcherUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'pitcher'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let rankUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'rank'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
       let teamScoreUrl= "https://kevin860320.github.io/dreamer/teamScore.json"
 
       axios.get(batterUrl)
       .then( (res) => {
-        batterData = res.data
+
+        for(i=0;i<res.data.values.length;i++){
+          batterData[i] = {
+            'number':res.data.values[i][0],
+            'name':res.data.values[i][1],
+            'GP':res.data.values[i][2],
+            'PA':res.data.values[i][3],
+            'AB':res.data.values[i][4],
+            'HIT':res.data.values[i][5],
+            'AVG':res.data.values[i][6],
+            'RBI':res.data.values[i][7],
+            'R':res.data.values[i][8],
+            'SB':res.data.values[i][9],
+            'K':res.data.values[i][10],
+            'BB':res.data.values[i][12],
+            'OBP':res.data.values[i][12],
+            'HR':res.data.values[i][13],
+          }
+        }
 
         this.tableDataAVG = batterData
         this.tableDataRBI = batterData
@@ -455,7 +473,27 @@
 
       axios.get(pitcherUrl)
       .then( (res) => {
-        pitcherData = res.data
+        for(i=0;i<res.data.values.length;i++){
+          pitcherData[i] = {
+            'number':res.data.values[i][0],
+            'name':res.data.values[i][1],
+            'GP':res.data.values[i][2],
+            'GS':res.data.values[i][3],
+            'GIF':res.data.values[i][4],
+            'IP':res.data.values[i][5],
+            'W':res.data.values[i][6],
+            'L':res.data.values[i][7],
+            'SV':res.data.values[i][8],
+            'HLD':res.data.values[i][9],
+            'ERA':res.data.values[i][10],
+            'K':res.data.values[i][12],
+            'BB':res.data.values[i][12],
+            'HIT':res.data.values[i][13],
+            'UR':res.data.values[i][14],
+            'ER':res.data.values[i][15],
+            'WHIP':res.data.values[i][16],
+          }
+        }
 
         this.tableDataW = pitcherData
         this.tableDataSV = pitcherData
@@ -489,7 +527,21 @@
 
       axios.get(rankUrl)
       .then( (res) => {
-        rankData = res.data     
+
+        for(i=0;i<res.data.values.length;i++){
+          
+          rankData[i] = {
+            'rank':res.data.values[i][0],
+            'team':res.data.values[i][1],
+            'total':res.data.values[i][2],
+            'game':res.data.values[i][3],
+            'win':res.data.values[i][4],
+            'lose':res.data.values[i][5],
+            'tie':res.data.values[i][6],
+            'rate':res.data.values[i][7],
+            'GB':res.data.values[i][8],
+          }
+        }
         this.tableDataRank = rankData
       })
       .catch( (err) => {

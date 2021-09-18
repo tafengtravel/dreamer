@@ -160,8 +160,6 @@
 
 
 <script>
-  let batterData
-    
   var Main = {
     data() {
       return {
@@ -188,13 +186,37 @@
 
       }
     },mounted(){
-      let batterUrl= "https://kevin860320.github.io/dreamer/batter.json"
-      let pitcherUrl= "https://kevin860320.github.io/dreamer/pitcher.json"
-      let rankUrl= "https://kevin860320.github.io/dreamer/rank.json"
+      let batterUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'batter'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let pitcherUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'pitcher'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let rankUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'rank'!A1:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let pitcherArr = []
 
       axios.get(pitcherUrl)
       .then( (res) => {
-        this.tableDataPitcher = res.data
+        console.log(res.data.values)
+
+        for(i=0;i<res.data.values.length;i++){
+          pitcherArr[i] = {
+            'number':res.data.values[i][0],
+            'name':res.data.values[i][1],
+            'GP':res.data.values[i][2],
+            'GS':res.data.values[i][3],
+            'GIF':res.data.values[i][4],
+            'IP':res.data.values[i][5],
+            'W':res.data.values[i][6],
+            'L':res.data.values[i][7],
+            'SV':res.data.values[i][8],
+            'HLD':res.data.values[i][9],
+            'ERA':res.data.values[i][10],
+            'K':res.data.values[i][12],
+            'BB':res.data.values[i][12],
+            'HIT':res.data.values[i][13],
+            'UR':res.data.values[i][14],
+            'ER':res.data.values[i][15],
+            'WHIP':res.data.values[i][16],
+          }
+        }
+        this.tableDataPitcher = pitcherArr
       })
       .catch( (err) => {
         console.log(err);
