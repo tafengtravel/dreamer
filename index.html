@@ -418,23 +418,23 @@
 
         for(i=0;i<res.data.values.length;i++){
           batterData[i] = {
-            'number':res.data.values[i][0],
+            'number':parseInt(res.data.values[i][0]),
             'name':res.data.values[i][1],
-            'GP':res.data.values[i][2],
-            'PA':res.data.values[i][3],
-            'AB':res.data.values[i][4],
-            'HIT':res.data.values[i][5],
-            'AVG':res.data.values[i][6],
-            'RBI':res.data.values[i][7],
-            'R':res.data.values[i][8],
-            'SB':res.data.values[i][9],
-            'K':res.data.values[i][10],
-            'BB':res.data.values[i][12],
-            'OBP':res.data.values[i][12],
-            'HR':res.data.values[i][13],
+            'GP':parseInt(res.data.values[i][2]),
+            'PA':parseInt(res.data.values[i][3]),
+            'AB':parseInt(res.data.values[i][4]),
+            'HIT':parseInt(res.data.values[i][5]),
+            'AVG':parseFloat(res.data.values[i][6]),
+            'RBI':parseInt(res.data.values[i][7]),
+            'R':parseInt(res.data.values[i][8]),
+            'SB':parseInt(res.data.values[i][9]),
+            'K':parseInt(res.data.values[i][10]),
+            'BB':parseInt(res.data.values[i][12]),
+            'OBP':parseFloat(res.data.values[i][12]),
+            'HR':parseInt(res.data.values[i][13]),
           }
         }
-
+        
         this.tableDataAVG = batterData
         this.tableDataRBI = batterData
         this.tableDataHR = batterData
@@ -451,15 +451,15 @@
         }
         console.log(this.tableDataAVG)
       
-        this.tableDataAVG = this.tableDataAVG.sort((a, b) => (b.AVG).localeCompare(a.AVG));
+        this.tableDataAVG = this.tableDataAVG.sort((a, b) => (b.AVG - a.AVG));
         this.tableDataAVG = this.tableDataAVG.slice(0,5)
-        this.tableDataRBI = this.tableDataRBI.sort((a, b) => (b.RBI).localeCompare(a.RBI));
+        this.tableDataRBI = this.tableDataRBI.sort((a, b) => (b.RBI - a.RBI));
         this.tableDataRBI = this.tableDataRBI.slice(0,5)
-        this.tableDataHR = this.tableDataHR.sort((a, b) => (b.HR).localeCompare(a.HR));
+        this.tableDataHR = this.tableDataHR.sort((a, b) => (b.HR - a.HR));
         this.tableDataHR = this.tableDataHR.slice(0,5)
-        this.tableDataHIT = this.tableDataHIT.sort((a, b) => (b.HIT).localeCompare(a.HIT));
+        this.tableDataHIT = this.tableDataHIT.sort((a, b) => (b.HIT - a.HIT));
         this.tableDataHIT = this.tableDataHIT.slice(0,5)
-        this.tableDataSB = this.tableDataSB.sort((a, b) => (b.SB).localeCompare(a.SB));
+        this.tableDataSB = this.tableDataSB.sort((a, b) => (b.SB - a.SB));
         this.tableDataSB = this.tableDataSB.slice(0,5)
 
         if(this.tableDataHR[0].HR == '0'){
@@ -475,23 +475,23 @@
       .then( (res) => {
         for(i=0;i<res.data.values.length;i++){
           pitcherData[i] = {
-            'number':res.data.values[i][0],
+            'number':parseInt(res.data.values[i][0]),
             'name':res.data.values[i][1],
-            'GP':res.data.values[i][2],
-            'GS':res.data.values[i][3],
-            'GIF':res.data.values[i][4],
-            'IP':res.data.values[i][5],
-            'W':res.data.values[i][6],
-            'L':res.data.values[i][7],
-            'SV':res.data.values[i][8],
-            'HLD':res.data.values[i][9],
-            'ERA':res.data.values[i][10],
-            'K':res.data.values[i][12],
-            'BB':res.data.values[i][12],
-            'HIT':res.data.values[i][13],
-            'UR':res.data.values[i][14],
-            'ER':res.data.values[i][15],
-            'WHIP':res.data.values[i][16],
+            'GP':parseInt(res.data.values[i][2]),
+            'GS':parseInt(res.data.values[i][3]),
+            'GIF':parseInt(res.data.values[i][4]),
+            'IP':parseFloat(res.data.values[i][5]),
+            'W':parseInt(res.data.values[i][6]),
+            'L':parseInt(res.data.values[i][7]),
+            'SV':parseInt(res.data.values[i][8]),
+            'HLD':parseInt(res.data.values[i][9]),
+            'ERA':parseFloat(res.data.values[i][10]),
+            'K':parseInt(res.data.values[i][12]),
+            'BB':parseInt(res.data.values[i][12]),
+            'HIT':parseInt(res.data.values[i][13]),
+            'UR':parseInt(res.data.values[i][14]),
+            'ER':parseInt(res.data.values[i][15]),
+            'WHIP':parseFloat(res.data.values[i][16]),
           }
         }
 
@@ -505,13 +505,13 @@
           this.tableDataK[i].K = parseInt(this.tableDataK[i].K)
         }//K STRING比對有問題 要先轉成INT
 
-        this.tableDataW = this.tableDataW.sort((a, b) => (b.W).localeCompare(a.W));
+        this.tableDataW = this.tableDataW.sort((a, b) => (b.W - a.W));
         this.tableDataW = this.tableDataW.slice(0,5)
-        this.tableDataSV = this.tableDataSV.sort((a, b) => (b.SV).localeCompare(a.SV));
+        this.tableDataSV = this.tableDataSV.sort((a, b) => (b.SV - a.SV));
         this.tableDataSV = this.tableDataSV.slice(0,5)
-        this.tableDataHLD = this.tableDataHLD.sort((a, b) => (b.HLD).localeCompare(a.HLD));
+        this.tableDataHLD = this.tableDataHLD.sort((a, b) => (b.HLD - a.HLD));
         this.tableDataHLD = this.tableDataHLD.slice(0,5)
-        this.tableDataERA = this.tableDataERA.sort((a, b) => (a.ERA).localeCompare(b.ERA));
+        this.tableDataERA = this.tableDataERA.sort((a, b) => (a.ERA - b.ERA));
         this.tableDataERA = this.tableDataERA.slice(0,5)
         this.tableDataK = this.tableDataK.sort((a, b) => (b.K - a.K));
         this.tableDataK = this.tableDataK.slice(0,5)
