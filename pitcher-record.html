@@ -187,7 +187,7 @@
       }
     },mounted(){
       let batterUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'batter'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
-      let pitcherUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'pitcher'!A2:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
+      let pitcherUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'pitcher'!A2:Q?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
       let rankUrl= "https://sheets.googleapis.com/v4/spreadsheets/18vDSTH43uJ9FRhKSGLVO-w4_nhO6dO_pl3Ivh3wAy-Q/values/'rank'!A1:N?key=AIzaSyDVX99fm1rQctLiW-BCTyo407Q0w4Ku_78"
       let pitcherArr = []
 
@@ -208,7 +208,7 @@
             'SV':res.data.values[i][8],
             'HLD':res.data.values[i][9],
             'ERA':res.data.values[i][10],
-            'K':res.data.values[i][12],
+            'K':res.data.values[i][11],
             'BB':res.data.values[i][12],
             'HIT':res.data.values[i][13],
             'UR':res.data.values[i][14],
