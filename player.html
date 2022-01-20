@@ -220,12 +220,12 @@
         </div>
         <el-col class ="el-col el-col-24 el-col-xs-24 el-col-sm-24 el-col-md-12 el-col-lg-24">
           <div style="text-align:center" >
-          <el-pagination background
-            layout="prev, pager, next"
-            :total="40"
-            @current-change="setPage">
-          </el-pagination>
-        </div>
+            <el-pagination background
+              layout="prev, pager, next"
+              :total="40"
+              @current-change="setPage">
+            </el-pagination>
+          </div>
         </el-col>
       </div>
       
@@ -233,6 +233,9 @@
     </el-col>
 
   </el-row>
+  <template>
+    <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+  </template>
   
 </div>
 
